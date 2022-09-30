@@ -1,0 +1,109 @@
+package a1;
+public class Account1 {
+	private long accountNumber;
+	private String userName;
+	private String password;
+	private int balance;
+	private KYCVerification kycdetails;
+	private ContactDetails contactDetails;
+	private int cashBack;
+	
+
+	public Account1()
+	{
+		super();
+	}
+	
+	
+	public Account1(long accountNumber, String userName, String password, int balance) {
+		super();
+		this.accountNumber = accountNumber;
+		this.userName = userName;
+		this.password = password;
+		this.balance = balance;
+		
+	}
+public long getAccountNumber() {
+		return accountNumber;
+	}
+
+
+	public void setAccountNumber(long accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public int getBalance() {
+		return balance;
+	}
+
+
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+
+
+	public KYCVerification getKycdetails() {
+		return kycdetails;
+	}
+
+
+	public void setKycdetails(KYCVerification kycdetails) {
+		this.kycdetails = kycdetails;
+	}
+
+
+	public ContactDetails getContactDetails() {
+		return contactDetails;
+	}
+
+
+	public void setContactDetails(ContactDetails contactDetails) {
+		this.contactDetails = contactDetails;
+	}
+
+
+	public int getCashBack() {
+		return cashBack;
+	}
+
+
+	public void setCashBack(int cashBack) {
+		this.cashBack = cashBack;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Account1 [accountNumber=" + accountNumber + ", userName=" + userName + ", password=" + password
+				+ ", balance=" + balance + ", kycdetails=" + kycdetails + ", contactDetails=" + contactDetails
+				+ "]";
+	}
+	
+	
+	
+			
+	
+	
+
+}

@@ -1,0 +1,232 @@
+package a1;
+
+import java.util.Scanner;
+import java.util.Random;
+public class Application {
+	 Account1 allAcc[]=new Account1[12435];
+     int noOfAcc=0;
+     Scanner sc= new Scanner(System.in);
+     Scanner scStr = new Scanner(System.in);
+     public static void main(String[] args) {
+		// TODO Auto-generated method stub
+        
+         
+         Application app= new Application();
+         while(true)
+         {
+        	 System.out.println("============website links=======");
+        	 System.out.println("0. Exit");
+        	 System.out.println("1. Submit user details;");
+        	 System.out.println("2. do Deposit Operation;");
+
+        	 System.out.println("3. do Withdrawal Operation;");
+        	 System.out.println("4. Print User all details;");
+        	 System.out.println("5. Print user contact details;");
+        	 System.out.println("6. Print user KYC document details;");
+        	 System.out.println("7. Print Balance;");
+        	 System.out.println("8. Change mobile number;");
+        	 System.out.println("9. Change Email Id;");
+        	 System.out.println("Enter your choice[0-9]:");
+        	 switch(app.sc.nextInt())
+        	 {
+        	 case 1:
+        		 app.submitUserDetails();
+        		 break;
+        	 case 2:
+        		 app.deposit();
+        		 break;
+            case 3:
+                app.withdraw();
+            	break;
+            case 4:
+                		app.viewAllUserDetails();
+                		 break;
+            case 5:
+                    		app.viewContactDetails();
+                    		 break;
+            case 6:
+        		app.viewKycDetails();
+        		 break;
+            case 7:
+        		app.printBalance();
+        		 break;
+            case 8:
+        		app.changeMobileNumber();
+        		 break;
+             default:
+            	 System.out.println("Exit");
+                 System.exit(0);
+                
+        	 }//switch end
+        	 
+
+         }//while end
+         
+   }//main end
+	public void submitUserDetails()
+	{
+		Random myRandom=new Random();
+		long accNo=myRandom.nextInt();
+		System.out.println("Enter the User Name: ");
+		String name=scStr.nextLine();
+		System.out.println("Enter the Password:");
+		String passw=scStr.nextLine();
+		System.out.println("Enter the Balance:");
+		int bal=sc.nextInt();
+		System.out.println("Enter the PAN Number:");
+		String panNo=scStr.nextLine();
+		System.out.println("Enter the Aadhar Number:");
+		long aadhar=sc.nextInt();
+		System.out.println("Enter the Document Type:");
+		String doctype=scStr.nextLine();
+		System.out.println("Enter the Document Number:");
+		String docNo=scStr.nextLine();
+		System.out.println("Enter the House Number:");
+		String houseNo=scStr.nextLine();
+		System.out.println("Enter the Locality Name:");
+		String locName=scStr.nextLine();
+		System.out.println("Enter the City Name:");
+		String cityname=scStr.nextLine();
+		System.out.println("Enter the State Name:");
+		String statename=scStr.nextLine();
+		System.out.println("Enter the Country Name:");
+		String countryname=scStr.nextLine();
+		System.out.println("Enter the Pin Code:");
+		long pin=sc.nextInt();
+		System.out.println("Enter the Mobile Number:");
+		long mobno=sc.nextInt();
+		System.out.println("Enter the emailID:");
+		long email=sc.nextInt();
+		
+		ContactDetails contactDetails= new ContactDetails(houseNo,locName,cityname,statename,countryname,pin,mobno,email);
+		KYCVerification kycVerification=new KYCVerification(panNo,aadhar,doctype,docNo);
+		Account1 a=new Account1(accNo,name,passw,bal);
+		
+		a.setKycdetails(kycVerification);
+		a.setContactDetails(contactDetails);
+		allAcc[noOfAcc++]=a;
+		System.out.println(""+a);
+		System.out.println("Added in the List!");
+		
+	}
+
+		
+			
+		
+public void deposit()
+{
+	System.out.println("Enter the Deposit Amount");
+	int amount=sc.nextInt();
+	System.out.println("Enter the Account Number to deposit");
+	int searchAccNumber=sc.nextInt();
+	
+	for(int i = 0;i<noOfAcc;i++)
+	{
+		Account1 a=allAcc[i];
+		
+		boolean isFound = (a.getAccountNumber() == searchAccNumber)?true:false;
+		
+		if(isFound)
+		{
+			a.setBalance(a.getBalance() + amount);
+			System.out.println("Amount Transfer Done");
+			System.out.println(a.getAccountNumber()+"-"+a.getBalance());
+		}
+	}
+}
+public void withdraw()
+{
+	System.out.println("Enter the withdraw Amount");
+	int amount=sc.nextInt();
+	System.out.println("Enter the Account Number");
+	int searchAccNumber=sc.nextInt();
+	
+	for(int i = 0;i<noOfAcc;i++)
+	{
+		Account1 a=allAcc[i];
+		
+		boolean isFound = (a.getAccountNumber() == searchAccNumber)?true:false;
+		
+		if(isFound)
+		{
+			a.setBalance(a.getBalance() - amount);
+			System.out.println("Amount Withdraw Done");
+			System.out.println(a.getAccountNumber()+"-"+a.getBalance());
+		}
+	}
+}
+public  Account1 getAccount(long searchAccNo)
+{    
+	
+	for(int i=0;i<noOfAcc;i++)
+	{
+		Account1 a=allAcc[i];
+        boolean isFound = (a.getAccountNumber() == searchAccNo)?true:false;
+		
+		if(isFound)
+		{
+			return a;
+			
+		}
+		
+	}
+	return null;
+}
+public void viewAllUserDetails()
+{
+	System.out.println("Enter The Account Number");
+	long searchAccNo=sc.nextInt();
+	Account1 a=getAccount(searchAccNo);
+	System.out.println(a);
+}
+public void viewContactDetails()
+{
+
+	System.out.println("Enter The Account Number");
+	long searchAccNo=sc.nextInt();
+	Account1 a=getAccount(searchAccNo);
+	System.out.println(a.getContactDetails());
+}
+public void viewKycDetails()
+{
+
+	System.out.println("Enter The Account Number");
+	long searchAccNo=sc.nextInt();
+	Account1 a=getAccount(searchAccNo);
+	System.out.println(a.getKycdetails());
+}
+public void printBalance()
+{
+	System.out.println("Enter The Account Number");
+	long searchAccNo=sc.nextInt();
+	Account1 a=getAccount(searchAccNo);
+	System.out.println(a.getBalance());
+}
+public void changeMobileNumber()
+{
+	System.out.println("Enter The Account Number");
+	long searchAccNo=sc.nextInt();
+	
+	Account1 a=getAccount(searchAccNo);
+	long previousMobileNumber = a.getContactDetails().getMobileNumber();
+	System.out.println(previousMobileNumber);
+	System.out.println("Enter the mobile Number:");
+	long mobno=sc.nextInt();
+    a.getContactDetails().setMobileNumber(mobno);
+    System.out.println("Mobile Number"+a.getContactDetails().getMobileNumber());
+}
+public void changeEmailId()
+{
+	System.out.println("Enter The Account Number");
+	long searchAccNo=sc.nextInt();
+	
+	Account1 a=getAccount(searchAccNo);
+	long previousEmailId = a.getContactDetails().getEmailId();
+	System.out.println(previousEmailId);
+	System.out.println("Enter the Email ID:");
+	long email=sc.nextInt();
+    a.getContactDetails().setEmailId(email);
+    System.out.println("Email ID"+a.getContactDetails().getEmailId());
+}
+}
+	

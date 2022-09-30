@@ -1,0 +1,79 @@
+public class ContactDetails {
+	private String houseNumber;
+	private String localityName;
+	private String CityName;
+	private String stateName;
+	private String countryName;
+	private long pinCode;
+	private long mobileNumber;
+	private long emailId;
+	public ContactDetails(String houseNumber, String localityName, String cityName, String stateName,
+			String countryName, long pinCode, long mobileNumber, long emailId) {
+		super();
+		this.houseNumber = houseNumber;
+		this.localityName = localityName;
+		CityName = cityName;
+		this.stateName = stateName;
+		this.countryName = countryName;
+		this.pinCode = pinCode;
+		this.mobileNumber = mobileNumber;
+		this.emailId = emailId;
+	}
+	public String getHouseNumber() {
+		return houseNumber;
+	}
+	public void setHouseNumber(String houseNumber) {
+		this.houseNumber = houseNumber;
+	}
+	public String getLocalityName() {
+		return localityName;
+	}
+	public void setLocalityName(String localityName) {
+		this.localityName = localityName;
+	}
+	public String getCityName() {
+		return CityName;
+	}
+	public void setCityName(String cityName) {
+		CityName = cityName;
+	}
+	public String getStateName() {
+		return stateName;
+	}
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
+	}
+	public String getCountryName() {
+		return countryName;
+	}
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
+	public long getPinCode() {
+		return pinCode;
+	}
+	public void setPinCode(long pinCode) {
+		this.pinCode = pinCode;
+	}
+	public long getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(long mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	public long getEmailId() {
+		return emailId;
+	}
+	public void setEmailId(long emailId) {
+		this.emailId = emailId;
+	}
+	@Override
+	public String toString() {
+		return "ContactDetails [houseNumber=" + houseNumber + ", localityName=" + localityName + ", CityName="
+				+ CityName + ", stateName=" + stateName + ", countryName=" + countryName + ", pinCode=" + pinCode
+				+ ", mobileNumber=" + mobileNumber + ", emailId=" + emailId + "]";
+	}
+	
+	
+
+}
